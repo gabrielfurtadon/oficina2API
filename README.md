@@ -38,12 +38,15 @@ A arquitetura do sistema segue uma abordagem modular, com as seguintes camadas:
 
 1. **Testes de Unidade**:
    - Utilizando **JUnit** para cobrir as funcionalidades do back-end, garantindo que cada unidade de código funcione conforme esperado.Com cobertura de decisão e declaração.
-
-2. **Testes E2E**:
-   - **Playwright** em JavaScript para testes end-to-end (E2E), validando o fluxo completo desde o login do professor até o registro e visualização de presenças.
-
-3. **Testes de Integração e Funcionais**:
+  
+2. **Testes de Integração e Funcionais**:
    - Interação entre o front-end e o back-end, assegurando que o sistema como um todo funcione de maneira integrada e confiável.
 
+3. **Testes E2E**:
+   - **Playwright** em JavaScript para testes end-to-end (E2E), validando o fluxo completo desde o login do professor até o registro e visualização de presenças.
 
+![image](https://github.com/user-attachments/assets/901ec728-1cb3-4f9f-8923-abaead1314c8)
 
+- **Sprint 1**: Foco principal em testes de unidade (JUnit, Jest) e testes de integração (Spring Boot Test, Jest) para garantir que as funcionalidades básicas e a comunicação entre as camadas (frontend/backend) estejam corretas.
+
+- **Sprint 2**: Concentração nos testes end-to-end (Playwright) para validar o sistema completo em fluxo real de usuário, com ajustes e correções baseadas nos testes da Sprint 1.
