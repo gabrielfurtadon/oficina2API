@@ -1,3 +1,6 @@
+## Repositório do Front: 
+https://github.com/gabrielfurtadon/Oficina2UI 
+
 # Projeto ELLP - Ensino Lúdico de Lógica e Programação
 
 Este projeto é uma solução de **Registro de Presença** para o projeto de extensão **ELLP - Ensino Lúdico de Lógica e Programação**. A proposta é desenvolver um sistema para gerenciar a presença dos alunos que participam das oficinas, permitindo que os professores acompanhem a frequência e o engajamento dos alunos ao longo do tempo.
