@@ -41,12 +41,15 @@ public class InstrutorController {
 
     @Autowired
     private InstrutorRepository instrutorRepository;
+    
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Transactional
     @PostMapping("/register")
     public Instrutor registerInstrutor(@RequestBody Instrutor instrutor) {
         instrutor.setId(UUID.randomUUID());
-        instrutor.setPassword(new BCryptPasswordEncoder().encode(instrutor.getPassword()));
+        instrutor.setPassword(bCryptPasswordEncoder.encode(instrutor.getPassword()));
         return instrutorRepository.save(instrutor);
     }
 
