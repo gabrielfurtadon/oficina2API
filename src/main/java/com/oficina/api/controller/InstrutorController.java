@@ -2,13 +2,18 @@ package com.oficina.api.controller;
 
 
 import java.nio.charset.StandardCharsets;
+import java.util.Collections;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
 import javax.crypto.SecretKey;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -54,7 +59,7 @@ public class InstrutorController {
     }
 
     @PostMapping("/login")
-    public String login(@RequestBody Instrutor instrutor) {
+    public ResponseEntity<?> login(@RequestBody Instrutor instrutor) {
         try {
             Authentication authentication = authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(instrutor.getEmail(), instrutor.getPassword())
@@ -75,9 +80,13 @@ public class InstrutorController {
                     .compact();
 
 
-            return token;
+            Map<String, String> response = new HashMap<>();
+            response.put("token", token);
+
+            return ResponseEntity.ok(response);
         } catch (AuthenticationException e) {
-            return "Falha no login: " + e.getMessage();
+        	 return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+        	            .body(Collections.singletonMap("error", "Falha no login: " + e.getMessage()));
         }
     }
 
