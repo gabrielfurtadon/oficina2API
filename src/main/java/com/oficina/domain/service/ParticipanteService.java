@@ -44,7 +44,7 @@ public class ParticipanteService {
             participanteExistente.setRa(participanteAtualizado.getRa());
         }
 
-        participanteExistente.setNome(participanteAtualizado.getNome());
+        participanteExistente.setName(participanteAtualizado.getName());
         participanteExistente.setRa(participanteAtualizado.getRa());
 
         return repository.save(participanteExistente);
