@@ -21,6 +21,7 @@ public class ParticipanteController {
     @PostMapping
     public ResponseEntity<?> cadastrarParticipante(@RequestBody Participante participante) {
         try {
+            participante.setId(UUID.randomUUID());
             Participante novoParticipante = participanteService.cadastrarParticipante(participante);
             return new ResponseEntity<>(novoParticipante, HttpStatus.CREATED);
         } catch(IllegalArgumentException ex) {
