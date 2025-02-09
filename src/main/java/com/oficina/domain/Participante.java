@@ -11,6 +11,6 @@ import java.util.UUID;
 public class Participante {
     @Id
     private UUID id;
-    private String nome;
+    private String name;
     private String ra;
 }
