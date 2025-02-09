@@ -33,12 +33,19 @@ public class ParticipanteService {
         return participante;
     }
 
-    public Participante atualizarParticipante(Participante participante) {
+    public Participante atualizarParticipante(String ra, Participante participanteAtualizado) {
 
-        Participante participanteExistente = buscarParticipantePorRa(participante.getRa());
+        Participante participanteExistente = buscarParticipantePorRa(ra);
 
-        participanteExistente.setNome(participante.getNome());
-        participanteExistente.setRa(participante.getRa());
+        if (participanteAtualizado.getRa() != null && !participanteAtualizado.getRa().equals(ra)) {
+            if (repository.getByRa(participanteAtualizado.getRa()) != null) {
+                throw new IllegalArgumentException("Já existe um participante com o RA: " + participanteAtualizado.getRa());
+            }
+            participanteExistente.setRa(participanteAtualizado.getRa());
+        }
+
+        participanteExistente.setNome(participanteAtualizado.getNome());
+        participanteExistente.setRa(participanteAtualizado.getRa());
 
         return repository.save(participanteExistente);
     }

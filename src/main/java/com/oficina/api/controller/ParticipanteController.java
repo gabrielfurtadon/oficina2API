@@ -41,11 +41,14 @@ public class ParticipanteController {
     }
 
     @PutMapping("/{ra}")
-    public ResponseEntity<Participante> atualizarParticipante(@PathVariable String ra,
-                                                              @RequestBody Participante participante) {
-        participante.setRa(ra);
-        Participante participanteAtualizado = participanteService.atualizarParticipante(participante);
-        return new ResponseEntity<>(participanteAtualizado, HttpStatus.OK);
+    public ResponseEntity<?> atualizarParticipante(@PathVariable String ra,
+                                                   @RequestBody Participante participante) {
+        try {
+            Participante participanteAtualizado = participanteService.atualizarParticipante(ra, participante);
+            return new ResponseEntity<>(participanteAtualizado, HttpStatus.OK);
+        } catch (IllegalArgumentException ex) {
+            return new ResponseEntity<>(ex.getMessage(), HttpStatus.CONFLICT);
+        }
     }
 
     @DeleteMapping("/{ra}")
